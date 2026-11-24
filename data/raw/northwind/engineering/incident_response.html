@@ -1,0 +1,17 @@
+<!doctype html><html><head><title>Incident Response Runbook — Northwind Systems</title></head>
+<body><nav>Home | Engineering | Runbooks</nav>
+<h1>Incident Response Runbook (RB-OPS-001)</h1>
+<p>Last updated 20 November 2025. Owner: SRE. This page defines severity levels, paging and communication for production incidents.</p>
+<h2>Severity levels</h2>
+<ul>
+<li><b>SEV1</b> — full outage or data loss affecting all customers. Page the Incident Commander immediately; status page update within 15 minutes; executive update every 30 minutes.</li>
+<li><b>SEV2</b> — major feature degraded for many customers. Page the on-call engineer; status page update within 30 minutes.</li>
+<li><b>SEV3</b> — minor degradation with a workaround. Create a Jira ticket in project OPS; no paging outside business hours.</li>
+</ul>
+<h2>Roles</h2>
+<p>The Incident Commander (IC) owns the incident, the Communications Lead owns updates to status.northwind.example and customers, and the Ops Lead drives the technical fix. The IC is paged through the PagerDuty schedule 'IC-Primary'.</p>
+<h2>Declaring an incident</h2>
+<p>Type <code>/incident declare</code> in Slack. This creates a channel named #inc-YYYYMMDD-shortname, opens a Jira incident and starts the timeline. Anyone can declare an incident — when in doubt, declare.</p>
+<h2>Post-incident review</h2>
+<p>A blameless post-incident review (PIR) is mandatory for SEV1 and SEV2. The draft is due within 5 business days and action items are tracked in Jira with the label 'pir-action'.</p>
+<footer>© Northwind Systems — internal use only</footer></body></html>

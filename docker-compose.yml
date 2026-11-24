@@ -1,0 +1,24 @@
+# Redis (chat memory for Flowise) + Flowise.
+# Chroma is served from the SAME folder the Python pipeline writes to:
+#     chroma run --path ./chroma_db --port 8000
+# Flowise inside Docker reaches it at http://host.docker.internal:8000
+# (change "Chroma URL" in the Chroma node to that value if you use this compose file).
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes: ["redis_data:/data"]
+
+  flowise:
+    image: flowiseai/flowise:latest
+    ports: ["3000:3000"]
+    environment:
+      - PORT=3000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes: ["flowise_data:/root/.flowise"]
+    depends_on: [redis]
+
+volumes:
+  redis_data:
+  flowise_data:

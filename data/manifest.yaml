@@ -1,0 +1,72 @@
+documents:
+- path: northwind/hr/leave_policy_2024.pdf
+  department: hr
+  doc_type: policy
+  date: '2024-01-15'
+  tenant: northwind
+  title: Leave Policy v3.1 (2024)
+  access: all
+- path: northwind/hr/leave_policy_2026.pdf
+  department: hr
+  doc_type: policy
+  date: '2026-03-01'
+  tenant: northwind
+  title: Leave Policy v4.0 (2026)
+  access: all
+- path: northwind/finance/travel_expense_policy.pdf
+  department: finance
+  doc_type: policy
+  date: '2025-07-01'
+  tenant: northwind
+  title: Travel & Expense Policy
+  access: all
+- path: northwind/engineering/runbook_db_failover.docx
+  department: engineering
+  doc_type: runbook
+  date: '2026-02-10'
+  tenant: northwind
+  title: Runbook RB-DB-004 DB Failover
+  access: all
+- path: northwind/legal/msa_acme_retail.docx
+  department: legal
+  doc_type: contract
+  date: '2025-05-12'
+  tenant: northwind
+  title: MSA Acme Retail CTR-2025-0412
+  access: legal
+- path: northwind/engineering/incident_response.html
+  department: engineering
+  doc_type: runbook
+  date: '2025-11-20'
+  tenant: northwind
+  title: Incident Response Runbook RB-OPS-001
+  access: all
+- path: northwind/it/security_awareness_2025.pptx
+  department: it
+  doc_type: policy
+  date: '2025-09-01'
+  tenant: northwind
+  title: Security Awareness 2025 (SEC-POL-010)
+  access: all
+- path: northwind/it/approved_software.xlsx
+  department: it
+  doc_type: catalog
+  date: '2026-02-01'
+  tenant: northwind
+  title: Approved Software Catalogue
+  access: all
+- path: northwind/support/tickets.csv
+  department: support
+  doc_type: ticket
+  date: '2026-07-02'
+  tenant: northwind
+  title: Support Tickets
+  access: all
+- path: contoso/hr/contoso_leave_policy.pdf
+  department: hr
+  doc_type: policy
+  date: '2025-01-01'
+  tenant: contoso
+  title: Contoso Leave Policy
+  access: all
+urls: []

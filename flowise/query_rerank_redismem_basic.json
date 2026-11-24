@@ -1,0 +1,669 @@
+{
+  "nodes": [
+    {
+      "id": "chatOpenAI_0",
+      "position": {
+        "x": 80,
+        "y": 60
+      },
+      "positionAbsolute": {
+        "x": 80,
+        "y": 60
+      },
+      "type": "customNode",
+      "width": 300,
+      "height": 670,
+      "selected": false,
+      "dragging": false,
+      "data": {
+        "id": "chatOpenAI_0",
+        "label": "ChatOpenAI",
+        "name": "chatOpenAI",
+        "type": "ChatOpenAI",
+        "version": 8,
+        "category": "Chat Models",
+        "description": "OpenAI chat model",
+        "baseClasses": [
+          "ChatOpenAI",
+          "BaseChatModel",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "optional": false,
+            "id": "chatOpenAI_0-input-credential-credential",
+            "credentialNames": [
+              "openAIApi"
+            ]
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "asyncOptions",
+            "optional": false,
+            "id": "chatOpenAI_0-input-modelName-asyncOptions",
+            "loadMethod": "listModels",
+            "default": "gpt-4o-mini"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "optional": true,
+            "id": "chatOpenAI_0-input-temperature-number",
+            "step": 0.1,
+            "default": 0.9
+          },
+          {
+            "label": "Streaming",
+            "name": "streaming",
+            "type": "boolean",
+            "optional": true,
+            "id": "chatOpenAI_0-input-streaming-boolean",
+            "default": true
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "id": "chatOpenAI_0-input-cache-BaseCache",
+            "optional": true
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "gpt-4o-mini",
+          "temperature": 0,
+          "streaming": true
+        },
+        "outputAnchors": [
+          {
+            "id": "chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
+            "name": "chatOpenAI",
+            "label": "ChatOpenAI",
+            "type": "ChatOpenAI | BaseChatModel | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      }
+    },
+    {
+      "id": "openAIEmbeddings_0",
+      "position": {
+        "x": 80,
+        "y": 780
+      },
+      "positionAbsolute": {
+        "x": 80,
+        "y": 780
+      },
+      "type": "customNode",
+      "width": 300,
+      "height": 420,
+      "selected": false,
+      "dragging": false,
+      "data": {
+        "id": "openAIEmbeddings_0",
+        "label": "OpenAI Embeddings",
+        "name": "openAIEmbeddings",
+        "type": "OpenAIEmbeddings",
+        "version": 4,
+        "category": "Embeddings",
+        "description": "Must match the model used by m2_chroma_ingestion.py",
+        "baseClasses": [
+          "OpenAIEmbeddings",
+          "Embeddings"
+        ],
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "optional": false,
+            "id": "openAIEmbeddings_0-input-credential-credential",
+            "credentialNames": [
+              "openAIApi"
+            ]
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "asyncOptions",
+            "optional": false,
+            "id": "openAIEmbeddings_0-input-modelName-asyncOptions",
+            "loadMethod": "listModels",
+            "default": "text-embedding-3-small"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "modelName": "text-embedding-3-small"
+        },
+        "outputAnchors": [
+          {
+            "id": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+            "name": "openAIEmbeddings",
+            "label": "OpenAIEmbeddings",
+            "type": "OpenAIEmbeddings | Embeddings"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      }
+    },
+    {
+      "id": "chroma_0",
+      "position": {
+        "x": 460,
+        "y": 700
+      },
+      "positionAbsolute": {
+        "x": 460,
+        "y": 700
+      },
+      "type": "customNode",
+      "width": 300,
+      "height": 600,
+      "selected": false,
+      "dragging": false,
+      "data": {
+        "id": "chroma_0",
+        "label": "Chroma",
+        "name": "chroma",
+        "type": "Chroma",
+        "version": 2,
+        "category": "Vector Stores",
+        "description": "Existing collection 'company_kb' served by `chroma run`",
+        "baseClasses": [
+          "Chroma",
+          "VectorStoreRetriever",
+          "BaseRetriever"
+        ],
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "optional": true,
+            "id": "chroma_0-input-credential-credential",
+            "credentialNames": [
+              "chromaApi"
+            ]
+          },
+          {
+            "label": "Collection Name",
+            "name": "collectionName",
+            "type": "string",
+            "optional": false,
+            "id": "chroma_0-input-collectionName-string"
+          },
+          {
+            "label": "Chroma URL",
+            "name": "chromaURL",
+            "type": "string",
+            "optional": true,
+            "id": "chroma_0-input-chromaURL-string"
+          },
+          {
+            "label": "Chroma Metadata Filter",
+            "name": "chromaMetadataFilter",
+            "type": "json",
+            "optional": true,
+            "id": "chroma_0-input-chromaMetadataFilter-json",
+            "additionalParams": true
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "type": "number",
+            "optional": true,
+            "id": "chroma_0-input-topK-number",
+            "additionalParams": true,
+            "step": 1,
+            "default": 4
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Document",
+            "name": "document",
+            "type": "Document",
+            "id": "chroma_0-input-document-Document",
+            "optional": true,
+            "list": true
+          },
+          {
+            "label": "Embeddings",
+            "name": "embeddings",
+            "type": "Embeddings",
+            "id": "chroma_0-input-embeddings-Embeddings"
+          },
+          {
+            "label": "Record Manager",
+            "name": "recordManager",
+            "type": "RecordManager",
+            "id": "chroma_0-input-recordManager-RecordManager",
+            "optional": true
+          }
+        ],
+        "inputs": {
+          "document": "",
+          "embeddings": "{{openAIEmbeddings_0.data.instance}}",
+          "recordManager": "",
+          "collectionName": "company_kb",
+          "chromaURL": "http://localhost:8000",
+          "chromaMetadataFilter": "{\"tenant\": \"northwind\"}",
+          "topK": 50
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "default": "retriever",
+            "options": [
+              {
+                "id": "chroma_0-output-retriever-Chroma|VectorStoreRetriever|BaseRetriever",
+                "name": "retriever",
+                "label": "Chroma Retriever",
+                "type": "Chroma | VectorStoreRetriever | BaseRetriever"
+              },
+              {
+                "id": "chroma_0-output-vectorStore-Chroma|VectorStore",
+                "name": "vectorStore",
+                "label": "Chroma Vector Store",
+                "type": "Chroma | VectorStore"
+              }
+            ]
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      }
+    },
+    {
+      "id": "cohereRerankRetriever_0",
+      "position": {
+        "x": 1240,
+        "y": 520
+      },
+      "positionAbsolute": {
+        "x": 1240,
+        "y": 520
+      },
+      "type": "customNode",
+      "width": 300,
+      "height": 560,
+      "selected": false,
+      "dragging": false,
+      "data": {
+        "id": "cohereRerankRetriever_0",
+        "label": "Cohere Rerank Retriever",
+        "name": "cohereRerankRetriever",
+        "type": "Cohere Rerank Retriever",
+        "version": 1,
+        "category": "Retrievers",
+        "description": "Cross-encoder rerank of the candidate pool",
+        "baseClasses": [
+          "Cohere Rerank Retriever",
+          "BaseRetriever"
+        ],
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "optional": false,
+            "id": "cohereRerankRetriever_0-input-credential-credential",
+            "credentialNames": [
+              "cohereApi"
+            ]
+          },
+          {
+            "label": "Model Name",
+            "name": "model",
+            "type": "options",
+            "optional": true,
+            "id": "cohereRerankRetriever_0-input-model-options",
+            "default": "rerank-english-v3.0",
+            "options": [
+              {
+                "label": "rerank-english-v3.0",
+                "name": "rerank-english-v3.0"
+              },
+              {
+                "label": "rerank-multilingual-v3.0",
+                "name": "rerank-multilingual-v3.0"
+              }
+            ]
+          },
+          {
+            "label": "Query",
+            "name": "query",
+            "type": "string",
+            "optional": true,
+            "id": "cohereRerankRetriever_0-input-query-string",
+            "acceptVariable": true
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "type": "number",
+            "optional": true,
+            "id": "cohereRerankRetriever_0-input-topK-number",
+            "additionalParams": true,
+            "default": 4
+          },
+          {
+            "label": "Max Chunks Per Doc",
+            "name": "maxChunksPerDoc",
+            "type": "number",
+            "optional": true,
+            "id": "cohereRerankRetriever_0-input-maxChunksPerDoc-number",
+            "additionalParams": true,
+            "default": 10
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Vector Store Retriever",
+            "name": "baseRetriever",
+            "type": "VectorStoreRetriever",
+            "id": "cohereRerankRetriever_0-input-baseRetriever-VectorStoreRetriever"
+          }
+        ],
+        "inputs": {
+          "baseRetriever": "{{chroma_0.data.instance}}",
+          "model": "rerank-english-v3.0",
+          "query": "",
+          "topK": 5,
+          "maxChunksPerDoc": 10
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "default": "retriever",
+            "options": [
+              {
+                "id": "cohereRerankRetriever_0-output-retriever-Cohere Rerank Retriever|BaseRetriever",
+                "name": "retriever",
+                "label": "Cohere Rerank Retriever",
+                "type": "Cohere Rerank Retriever | BaseRetriever"
+              },
+              {
+                "id": "cohereRerankRetriever_0-output-document-Document|json",
+                "name": "document",
+                "label": "Document",
+                "type": "Document | json"
+              },
+              {
+                "id": "cohereRerankRetriever_0-output-text-string|json",
+                "name": "text",
+                "label": "Text",
+                "type": "string | json"
+              }
+            ]
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      }
+    },
+    {
+      "id": "RedisBackedChatMemory_0",
+      "position": {
+        "x": 1240,
+        "y": 40
+      },
+      "positionAbsolute": {
+        "x": 1240,
+        "y": 40
+      },
+      "type": "customNode",
+      "width": 300,
+      "height": 330,
+      "selected": false,
+      "dragging": false,
+      "data": {
+        "id": "RedisBackedChatMemory_0",
+        "label": "Redis-Backed Chat Memory",
+        "name": "RedisBackedChatMemory",
+        "type": "RedisBackedChatMemory",
+        "version": 2,
+        "category": "Memory",
+        "description": "Conversation memory persisted in Redis (survives restarts, shared across replicas)",
+        "baseClasses": [
+          "RedisBackedChatMemory",
+          "BaseChatMemory",
+          "BaseMemory"
+        ],
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "optional": false,
+            "id": "RedisBackedChatMemory_0-input-credential-credential",
+            "credentialNames": [
+              "redisCacheApi",
+              "redisCacheUrlApi"
+            ]
+          },
+          {
+            "label": "Session Id",
+            "name": "sessionId",
+            "type": "string",
+            "optional": true,
+            "id": "RedisBackedChatMemory_0-input-sessionId-string",
+            "additionalParams": true,
+            "default": ""
+          },
+          {
+            "label": "Session Timeouts",
+            "name": "sessionTTL",
+            "type": "number",
+            "optional": true,
+            "id": "RedisBackedChatMemory_0-input-sessionTTL-number",
+            "additionalParams": true
+          },
+          {
+            "label": "Memory Key",
+            "name": "memoryKey",
+            "type": "string",
+            "optional": false,
+            "id": "RedisBackedChatMemory_0-input-memoryKey-string",
+            "additionalParams": true,
+            "default": "chat_history"
+          },
+          {
+            "label": "Window Size",
+            "name": "windowSize",
+            "type": "number",
+            "optional": true,
+            "id": "RedisBackedChatMemory_0-input-windowSize-number",
+            "additionalParams": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "sessionId": "",
+          "sessionTTL": 86400,
+          "memoryKey": "chat_history",
+          "windowSize": 6
+        },
+        "outputAnchors": [
+          {
+            "id": "RedisBackedChatMemory_0-output-RedisBackedChatMemory-RedisBackedChatMemory|BaseChatMemory|BaseMemory",
+            "name": "RedisBackedChatMemory",
+            "label": "RedisBackedChatMemory",
+            "type": "RedisBackedChatMemory | BaseChatMemory | BaseMemory"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      }
+    },
+    {
+      "id": "conversationalRetrievalQAChain_0",
+      "position": {
+        "x": 1640,
+        "y": 300
+      },
+      "positionAbsolute": {
+        "x": 1640,
+        "y": 300
+      },
+      "type": "customNode",
+      "width": 300,
+      "height": 530,
+      "selected": false,
+      "dragging": false,
+      "data": {
+        "id": "conversationalRetrievalQAChain_0",
+        "label": "Conversational Retrieval QA Chain",
+        "name": "conversationalRetrievalQAChain",
+        "type": "ConversationalRetrievalQAChain",
+        "version": 3,
+        "category": "Chains",
+        "description": "Rephrase with memory \u2192 retrieve \u2192 answer with citations",
+        "baseClasses": [
+          "ConversationalRetrievalQAChain",
+          "BaseChain",
+          "Runnable"
+        ],
+        "inputParams": [
+          {
+            "label": "Return Source Documents",
+            "name": "returnSourceDocuments",
+            "type": "boolean",
+            "optional": true,
+            "id": "conversationalRetrievalQAChain_0-input-returnSourceDocuments-boolean"
+          },
+          {
+            "label": "Rephrase Prompt",
+            "name": "rephrasePrompt",
+            "type": "string",
+            "optional": true,
+            "id": "conversationalRetrievalQAChain_0-input-rephrasePrompt-string",
+            "additionalParams": true,
+            "rows": 4,
+            "default": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question. Keep any IDs exactly.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:"
+          },
+          {
+            "label": "Response Prompt",
+            "name": "responsePrompt",
+            "type": "string",
+            "optional": true,
+            "id": "conversationalRetrievalQAChain_0-input-responsePrompt-string",
+            "additionalParams": true,
+            "rows": 4,
+            "default": "You are the internal Company Knowledge-Base assistant. Answer ONLY from the context below. After every factual sentence cite the source document title in square brackets, e.g. [Leave Policy v4.0 (2026)]. If passages conflict, prefer the most recent effective date. Quote IDs, amounts and dates exactly. If the context does not contain the answer, reply exactly: \"I couldn't find this in the knowledge base.\"\n------------\n{context}\n------------"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Chat Model",
+            "name": "model",
+            "type": "BaseChatModel",
+            "id": "conversationalRetrievalQAChain_0-input-model-BaseChatModel"
+          },
+          {
+            "label": "Vector Store Retriever",
+            "name": "vectorStoreRetriever",
+            "type": "BaseRetriever",
+            "id": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+          },
+          {
+            "label": "Memory",
+            "name": "memory",
+            "type": "BaseMemory",
+            "id": "conversationalRetrievalQAChain_0-input-memory-BaseMemory",
+            "optional": true
+          },
+          {
+            "label": "Input Moderation",
+            "name": "inputModeration",
+            "type": "Moderation",
+            "id": "conversationalRetrievalQAChain_0-input-inputModeration-Moderation",
+            "optional": true,
+            "list": true
+          }
+        ],
+        "inputs": {
+          "model": "{{chatOpenAI_0.data.instance}}",
+          "vectorStoreRetriever": "{{cohereRerankRetriever_0.data.instance}}",
+          "memory": "{{RedisBackedChatMemory_0.data.instance}}",
+          "returnSourceDocuments": true,
+          "rephrasePrompt": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question. Keep any IDs exactly.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
+          "responsePrompt": "You are the internal Company Knowledge-Base assistant. Answer ONLY from the context below. After every factual sentence cite the source document title in square brackets, e.g. [Leave Policy v4.0 (2026)]. If passages conflict, prefer the most recent effective date. Quote IDs, amounts and dates exactly. If the context does not contain the answer, reply exactly: \"I couldn't find this in the knowledge base.\"\n------------\n{context}\n------------",
+          "inputModeration": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "conversationalRetrievalQAChain_0-output-conversationalRetrievalQAChain-ConversationalRetrievalQAChain|BaseChain|Runnable",
+            "name": "conversationalRetrievalQAChain",
+            "label": "ConversationalRetrievalQAChain",
+            "type": "ConversationalRetrievalQAChain | BaseChain | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "openAIEmbeddings_0",
+      "sourceHandle": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+      "target": "chroma_0",
+      "targetHandle": "chroma_0-input-embeddings-Embeddings",
+      "type": "buttonedge",
+      "id": "openAIEmbeddings_0-openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings-chroma_0-chroma_0-input-embeddings-Embeddings"
+    },
+    {
+      "source": "chroma_0",
+      "sourceHandle": "chroma_0-output-retriever-Chroma|VectorStoreRetriever|BaseRetriever",
+      "target": "cohereRerankRetriever_0",
+      "targetHandle": "cohereRerankRetriever_0-input-baseRetriever-VectorStoreRetriever",
+      "type": "buttonedge",
+      "id": "chroma_0-chroma_0-output-retriever-Chroma|VectorStoreRetriever|BaseRetriever-cohereRerankRetriever_0-cohereRerankRetriever_0-input-baseRetriever-VectorStoreRetriever"
+    },
+    {
+      "source": "chatOpenAI_0",
+      "sourceHandle": "chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-model-BaseChatModel",
+      "type": "buttonedge",
+      "id": "chatOpenAI_0-chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-model-BaseChatModel"
+    },
+    {
+      "source": "cohereRerankRetriever_0",
+      "sourceHandle": "cohereRerankRetriever_0-output-retriever-Cohere Rerank Retriever|BaseRetriever",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
+      "type": "buttonedge",
+      "id": "cohereRerankRetriever_0-cohereRerankRetriever_0-output-retriever-Cohere Rerank Retriever|BaseRetriever-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+    },
+    {
+      "source": "RedisBackedChatMemory_0",
+      "sourceHandle": "RedisBackedChatMemory_0-output-RedisBackedChatMemory-RedisBackedChatMemory|BaseChatMemory|BaseMemory",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-memory-BaseMemory",
+      "type": "buttonedge",
+      "id": "RedisBackedChatMemory_0-RedisBackedChatMemory_0-output-RedisBackedChatMemory-RedisBackedChatMemory|BaseChatMemory|BaseMemory-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-memory-BaseMemory"
+    }
+  ]
+}

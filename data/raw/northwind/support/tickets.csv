@@ -1,0 +1,9 @@
+ticket_id,date,severity,status,service,title,resolution
+INC-2041,2025-12-03,SEV2,Resolved,orders-db,Checkout failing with 'connection pool exhausted' errors,PgBouncer max_client_conn was 500 and saturated during the holiday sale. Root cause: connection leak in the orders service after release 3.14.2. Fix: rolled back to 3.14.1 and raised max_client_conn to 1000. Follow-up PIR action: add pool-saturation alert.
+INC-2057,2026-01-14,SEV1,Resolved,orders-db,Primary database down in eu-west-1,orders-db-primary lost its disk. Failover executed using runbook RB-DB-004; standby-1 promoted in 11 minutes. RPO met (no data loss).
+INC-2063,2026-02-02,SEV3,Resolved,sso,Some users cannot log in with Okta SSO,Clock skew on two Okta agent hosts. Fixed by re-enabling NTP sync. Workaround was password + MFA login.
+INC-2078,2026-03-19,SEV2,Resolved,search,Product search returns stale prices,Elasticsearch index refresh job stuck after a mapping change. Reindexed products-v7 and added a staleness monitor.
+INC-2090,2026-04-07,SEV3,Open,email,Password reset emails delayed by 20+ minutes,SendGrid rate limiting due to marketing campaign sharing the same API key. Proposed fix: separate transactional sub-user.
+INC-2102,2026-05-22,SEV2,Resolved,payments,Card payments declined for Amex,Payment gateway rotated its TLS certificate; our pinning config was outdated. Updated pinned certificates and removed pinning for the gateway domain.
+REQ-3310,2026-06-11,-,Closed,it,Request: access to DataGrip for analytics team,Approved per software catalogue; licences assigned by IT.
+REQ-3324,2026-07-02,-,Closed,hr,Question: does carry-over PTO expire?,Answered by People Team: under HR-POL-002 v4.0 carried-over days expire on 30 June.
